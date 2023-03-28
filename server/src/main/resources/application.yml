@@ -45,7 +45,7 @@ logging:
 
 jwt:
   # JWT 存储的请求头
-  tokenHeap: Authorization
+  tokenHeader: Authorization
   # JWT 加解密使用的密钥
   secret: kekwy-secret
   # JWT 的超期限时间（60*60*24）
