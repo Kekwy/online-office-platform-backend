@@ -1,11 +1,11 @@
 package com.kekwy.oopt.server.pojo;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Value;
 import lombok.experimental.Accessors;
+
+import static io.swagger.v3.oas.annotations.media.Schema.RequiredMode.REQUIRED;
 
 /**
  * 登录实体类
@@ -13,10 +13,10 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "AdminLogin对象", description = "")
+@Schema(name = "AdminLogin对象", description = "")
 public class AdminLoginParam {
-    @ApiModelProperty(value = "用户名", required = true)
+    @Schema(name = "用户名", requiredMode = REQUIRED)
     private String username;
-    @ApiModelProperty(value = "密码", required = true)
+    @Schema(name = "密码", requiredMode = REQUIRED)
     private String password;
 }

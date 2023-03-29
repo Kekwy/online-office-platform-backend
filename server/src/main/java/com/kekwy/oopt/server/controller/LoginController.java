@@ -4,16 +4,17 @@ import com.kekwy.oopt.server.pojo.AdminLoginParam;
 import com.kekwy.oopt.server.pojo.RespBean;
 import com.kekwy.oopt.server.pojo.TAdmin;
 import com.kekwy.oopt.server.service.ITAdminService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
 
-@Api(tags = "LoginController")
+@Tag(name = "LoginController")
 @RestController
 public class LoginController {
 
@@ -23,13 +24,13 @@ public class LoginController {
         this.adminService = adminService;
     }
 
-    @ApiOperation(value = "登录之后返回 token")
+    @Operation(description = "登录之后返回 token")
     @PostMapping("/login")
-    public RespBean login(AdminLoginParam adminLoginParam, HttpServletRequest request) {
+    public RespBean login(AdminLoginParam adminLoginParam, HttpServletRequest request, UserDetailsService service) {
         return adminService.login(adminLoginParam.getUsername(), adminLoginParam.getPassword(), request);
     }
 
-    @ApiOperation(value = "获取当前用户的信息")
+    @Operation(description = "获取当前用户的信息")
     @GetMapping("/admin/info")
     public TAdmin getAdminInfo(Principal principal) {
         if (null == principal) {
@@ -41,7 +42,7 @@ public class LoginController {
         return admin;
     }
 
-    @ApiOperation(value = "退出登录")
+    @Operation(description = "退出登录")
     @PostMapping("/logout")
     public RespBean logout() {
         return RespBean.success("注销成功！");

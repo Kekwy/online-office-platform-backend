@@ -33,7 +33,19 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 // 允许登录访问
-                .authorizeHttpRequests().requestMatchers("/login", "/logout").permitAll()
+                .authorizeHttpRequests().requestMatchers(
+                        "/login",
+                        "/logout",
+                        "/css/**",
+                        "/js/**",
+                        "/index.html",
+                        "favicon.ico",
+                        "/doc.html",
+                        "/webjars/**",
+                        "/swagger-resources/**",
+                        "/v3/api-docs/**",
+                        "/captcha"
+                        ).permitAll()
                 // 除了上面，所有请求都要拦截
                 .anyRequest().authenticated()
                 .and()
@@ -47,6 +59,7 @@ public class SecurityConfig {
                 .authenticationEntryPoint(restAuthorizationEntryPoint);
         return http.build();
     }
+
 
     @Bean
     public UserDetailsService userDetailsService() {

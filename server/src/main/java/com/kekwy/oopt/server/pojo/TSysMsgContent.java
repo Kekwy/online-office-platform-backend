@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,22 +22,22 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TSysMsgContent对象", description="")
+@Schema(name="TSysMsgContent对象", description="")
 public class TSysMsgContent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "标题")
+    @Schema(name = "标题")
     private String title;
 
-    @ApiModelProperty(value = "内容")
+    @Schema(name = "内容")
     private String message;
 
-    @ApiModelProperty(value = "创建时间")
+    @Schema(name = "创建时间")
     @TableField("createDate")
     private LocalDateTime createDate;
 

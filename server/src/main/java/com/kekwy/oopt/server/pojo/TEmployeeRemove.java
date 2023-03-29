@@ -5,8 +5,7 @@ import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,34 +21,34 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TEmployeeRemove对象", description="")
+@Schema(name="TEmployeeRemove对象", description="")
 public class TEmployeeRemove implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "员工id")
+    @Schema(name = "员工id")
     private Integer eid;
 
-    @ApiModelProperty(value = "调动后部门")
+    @Schema(name = "调动后部门")
     @TableField("afterDepId")
     private Integer afterDepId;
 
-    @ApiModelProperty(value = "调动后职位")
+    @Schema(name = "调动后职位")
     @TableField("afterJobId")
     private Integer afterJobId;
 
-    @ApiModelProperty(value = "调动日期")
+    @Schema(name = "调动日期")
     @TableField("removeDate")
     private LocalDate removeDate;
 
-    @ApiModelProperty(value = "调动原因")
+    @Schema(name = "调动原因")
     private String reason;
 
-    @ApiModelProperty(value = "备注")
+    @Schema(name = "备注")
     private String remark;
 
 

@@ -5,8 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,23 +21,23 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TPosition对象", description="")
+@Schema(name="TPosition对象", description="")
 public class TPosition implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "职位")
+    @Schema(name = "职位")
     private String name;
 
-    @ApiModelProperty(value = "创建时间")
+    @Schema(name = "创建时间")
     @TableField("createDate")
     private LocalDateTime createDate;
 
-    @ApiModelProperty(value = "是否启用")
+    @Schema(name = "是否启用")
     private Boolean enabled;
 
 

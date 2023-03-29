@@ -6,8 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Collection;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -25,41 +24,41 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TAdmin对象", description="")
+@Schema(name="TAdmin对象", description="")
 public class TAdmin implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "姓名")
+    @Schema(name = "姓名")
     private String name;
 
-    @ApiModelProperty(value = "手机号码")
+    @Schema(name = "手机号码")
     private String phone;
 
-    @ApiModelProperty(value = "住宅电话")
+    @Schema(name = "住宅电话")
     private String telephone;
 
-    @ApiModelProperty(value = "联系地址")
+    @Schema(name = "联系地址")
     private String address;
 
-    @ApiModelProperty(value = "是否启用")
+    @Schema(name = "是否启用")
     private Boolean enabled;
 
-    @ApiModelProperty(value = "用户名")
+    @Schema(name = "用户名")
     private String username;
 
-    @ApiModelProperty(value = "密码")
+    @Schema(name = "密码")
     private String password;
 
-    @ApiModelProperty(value = "用户头像")
+    @Schema(name = "用户头像")
     @TableField("userFace")
     private String userFace;
 
-    @ApiModelProperty(value = "备注")
+    @Schema(name = "备注")
     private String remark;
 
 

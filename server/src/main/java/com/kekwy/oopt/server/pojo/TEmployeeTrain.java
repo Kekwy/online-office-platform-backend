@@ -5,8 +5,7 @@ import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,27 +21,27 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TEmployeeTrain对象", description="")
+@Schema(name="TEmployeeTrain对象", description="")
 public class TEmployeeTrain implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "员工编号")
+    @Schema(name = "员工编号")
     private Integer eid;
 
-    @ApiModelProperty(value = "培训日期")
+    @Schema(name = "培训日期")
     @TableField("trainDate")
     private LocalDate trainDate;
 
-    @ApiModelProperty(value = "培训内容")
+    @Schema(name = "培训内容")
     @TableField("trainContent")
     private String trainContent;
 
-    @ApiModelProperty(value = "备注")
+    @Schema(name = "备注")
     private String remark;
 
 

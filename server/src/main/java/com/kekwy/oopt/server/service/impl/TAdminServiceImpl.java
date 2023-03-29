@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,24 +32,24 @@ import java.util.Map;
 @Service
 public class TAdminServiceImpl extends ServiceImpl<TAdminMapper, TAdmin> implements ITAdminService {
 
-    private final TAdminMapper adminMapper;
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    @Autowired
+    private TAdminMapper adminMapper;
 
-    private final UserDetailsService userDetailsService;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtTokenUtil jwtTokenUtil;
+    @Lazy
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Lazy
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
 
-    public TAdminServiceImpl(UserDetailsService userDetailsService,
-                             PasswordEncoder passwordEncoder, JwtTokenUtil jwtTokenUtil,
-                             @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-                             TAdminMapper adminMapper) {
-        this.userDetailsService = userDetailsService;
-        this.passwordEncoder = passwordEncoder;
-        this.jwtTokenUtil = jwtTokenUtil;
-        this.adminMapper = adminMapper;
-    }
 
     /**
      * 登录后返回 token

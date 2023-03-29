@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,23 +22,23 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TOplog对象", description="")
+@Schema(name="TOplog对象", description="")
 public class TOplog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "添加日期")
+    @Schema(name = "添加日期")
     @TableField("addDate")
     private LocalDate addDate;
 
-    @ApiModelProperty(value = "操作内容")
+    @Schema(name = "操作内容")
     private String operate;
 
-    @ApiModelProperty(value = "操作员ID")
+    @Schema(name = "操作员ID")
     private Integer adminid;
 
 

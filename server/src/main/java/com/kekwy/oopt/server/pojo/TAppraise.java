@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -22,31 +22,31 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="TAppraise对象", description="")
+@Schema(name="TAppraise对象", description="")
 public class TAppraise implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "id")
+    @Schema(name = "id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "员工id")
+    @Schema(name = "员工id")
     private Integer eid;
 
-    @ApiModelProperty(value = "考评日期")
+    @Schema(name = "考评日期")
     @TableField("appDate")
     private LocalDate appDate;
 
-    @ApiModelProperty(value = "考评结果")
+    @Schema(name = "考评结果")
     @TableField("appResult")
     private String appResult;
 
-    @ApiModelProperty(value = "考评内容")
+    @Schema(name = "考评内容")
     @TableField("appContent")
     private String appContent;
 
-    @ApiModelProperty(value = "备注")
+    @Schema(name = "备注")
     private String remark;
 
 

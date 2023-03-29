@@ -22,7 +22,6 @@ import java.io.IOException;
  * @version 1.0
  * @since 2023/3/28 20:55
  */
-@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Value("${jwt.tokenHeader}")
@@ -48,7 +47,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 // 登录
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 // 验证 token 是否有效，重新设置用户对象
-                if (jwtTokenUtil.validateToken(tokenHead, userDetails)) {
+                if (jwtTokenUtil.validateToken(authToken, userDetails)) {
                     UsernamePasswordAuthenticationToken token =
                             new UsernamePasswordAuthenticationToken(userDetails, null,
                                     userDetails.getAuthorities());
